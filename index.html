@@ -1,12 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dacos IT</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dacos Hiring Funnel – an idea</title>
+<meta name="description" content="A hiring funnel that keeps entry-level candidates engaged and matches them to jobs near them.">
+<style>
+:root{--navy:#232A5C;--pink:#FF0099;--ink:#2b2f4a;--mute:#5d6280;--tint:#F1F2F9;--line:#dcdeee;--bg:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Calibri,Carlito,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);font-size:18px;line-height:1.55}
+a{color:var(--navy)}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{padding:14px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+header img{height:56px;width:auto;display:block}
+header span{color:var(--mute);font-size:15px}
+.hero{padding:64px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+h1{font-size:clamp(34px,5vw,56px);line-height:1.08;margin:0 0 20px;color:var(--navy);letter-spacing:-.01em}
+.lead{font-size:21px;color:var(--mute);max-width:34em;margin:0 0 28px}
+.tag{display:inline-block;border-left:4px solid var(--pink);padding:2px 0 2px 12px;color:var(--navy);font-weight:700;font-size:16px}
+.funnel{display:flex;flex-direction:column;align-items:center;gap:5px;margin:0;padding:0;list-style:none}
+.funnel li{height:56px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,16px 100%);width:var(--w);background:var(--c)}
+.funnel li:last-child{height:64px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--tint)}
+h2{font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin:0 0 12px;color:var(--navy)}
+.sub{color:var(--mute);max-width:40em;margin:0 0 36px}
+.grid{display:grid;gap:32px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+h3{font-size:20px;margin:0 0 6px;color:var(--navy)}
+p{margin:0 0 12px}
+.problem{border-left:4px solid var(--navy);padding-left:18px}
+.problem.hot{border-color:var(--pink)}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;position:relative;padding-top:44px;font-size:16px;line-height:1.4}
+.steps li::before{content:counter(s);position:absolute;top:0;left:0;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;display:grid;place-items:center}
+.steps li:last-child::before{background:var(--pink)}
+.steps li::after{content:"";position:absolute;top:17px;left:42px;right:-8px;height:2px;background:var(--line)}
+.steps li:last-child::after{display:none}
+.steps b{display:block;color:var(--navy);font-size:17px}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:#fff}
+.tier{padding:24px}
+.tier+.tier{border-left:1px solid var(--line)}
+.tier h3{display:flex;align-items:center;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--c);display:inline-block}
+.tier p{font-size:16px;color:var(--mute)}
+ul.clean{margin:0;padding-left:20px}
+ul.clean li{margin-bottom:8px}
+.mvp{background:var(--navy);color:#fff}
+.mvp h2,.mvp h3{color:#fff}.mvp .sub{color:#c9cce6}
+.mvp ul.clean li::marker{color:var(--pink)}
+.q{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 40px;list-style:none;padding:0;margin:0}
+.q li{padding:12px 0;border-bottom:1px solid var(--line)}
+footer{padding:36px 0;border-top:1px solid var(--line);color:var(--mute);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:860px){
+  .hero .wrap,.g3,.g2,.tiers,.q{grid-template-columns:1fr}
+  .tier+.tier{border-left:0;border-top:1px solid var(--line)}
+  .steps{grid-template-columns:1fr;gap:20px}
+  .steps li{padding:0 0 0 52px;min-height:34px}
+  .steps li::after{display:none}
+  .hero{padding:40px 0 48px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .funnel li{animation:drop .6s both}
+  .funnel li:nth-child(2){animation-delay:.1s}.funnel li:nth-child(3){animation-delay:.2s}
+  .funnel li:nth-child(4){animation-delay:.3s}.funnel li:nth-child(5){animation-delay:.4s}.funnel li:nth-child(6){animation-delay:.5s}
+}
+@keyframes drop{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+</style>
 </head>
 <body>
-  <h1>Dacos IT</h1>
-  <p>Welcome. Site coming soon.</p>
+<header>
+  <div class="wrap">
+    <img src="logo.jpg" alt="Dacos">
+    <span>Concept draft · October 2026</span>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Hire the right people, near the right job.</h1>
+      <p class="lead">A hiring funnel for entry-level cleaning teams that answers applicants in minutes, keeps waiting candidates warm, and matches them to sites they will actually travel to.</p>
+      <span class="tag">An idea in progress from Dacos LLC</span>
+    </div>
+    <ol class="funnel" aria-label="Hiring funnel stages">
+      <li style="--w:100%;--c:#232A5C">Apply</li>
+      <li style="--w:88%;--c:#3b3f86">Presort</li>
+      <li style="--w:76%;--c:#6a3a9e">Prescreen</li>
+      <li style="--w:64%;--c:#a62fa8">Group interview</li>
+      <li style="--w:52%;--c:#d4129f">Show up</li>
+      <li style="--w:40%;--c:#FF0099">Offer or pool</li>
+    </ol>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap">
+    <h2>Three things slow cleaning teams down</h2>
+    <p class="sub">We tried this with Zoho and Odoo. The idea works. These problems kept getting in the way.</p>
+    <div class="grid g3">
+      <div class="problem hot"><h3>Waiting candidates drift away</h3><p>Good people sit in a list with no news and lose interest before a job opens.</p></div>
+      <div class="problem hot"><h3>Short shifts, short commutes</h3><p>Our side jobs are spread out, and workers will not travel far for a few hours of work.</p></div>
+      <div class="problem"><h3>Too much manual work</h3><p>Calls, scheduling, reminders and no-shows eat up recruiter time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="journey">
+  <div class="wrap">
+    <h2>One path from application to first shift</h2>
+    <p class="sub">Candidates apply on Indeed, then get invited to a Dacos page that guides them the rest of the way.</p>
+    <ol class="steps">
+      <li><b>Invite</b>Link sent right after they apply</li>
+      <li><b>Presort</b>Work eligibility and basic fit</li>
+      <li><b>Prescreen</b>Short call or chat</li>
+      <li><b>Group interview</b>Book a slot, get reminders</li>
+      <li><b>Show up</b>Check in and meet the team</li>
+      <li><b>Offer or pool</b>A job near them, or a place in the pool</li>
+    </ol>
+  </div>
+</section>
+
+<section id="ideas">
+  <div class="wrap">
+    <h2>Where it gets interesting</h2>
+    <p class="sub">Two ideas carry the whole concept.</p>
+    <div class="grid g2">
+      <div>
+        <h3>Location comes first</h3>
+        <ul class="clean">
+          <li>Every site and every candidate has a place on the map.</li>
+          <li>Candidates say how far they will go.</li>
+          <li>Jobs are advertised only where we need people.</li>
+          <li>Open shifts go first to the nearest ready candidates.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>The pool stays warm</h3>
+        <ul class="clean">
+          <li>Quick text confirmation within minutes of applying.</li>
+          <li>A weekly "still available?" reply check.</li>
+          <li>An alert when work opens near them.</li>
+          <li>Clear opt-out and automatic expiry.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="levels">
+  <div class="wrap">
+    <h2>What the market offers today</h2>
+    <p class="sub">AI hiring tools are moving from simple chatbots to agents that run whole workflows. We sorted the features into three levels.</p>
+    <div class="tiers">
+      <div class="tier"><h3><span class="dot" style="--c:#232A5C"></span>Foundation</h3><p>Mobile apply, screening questions, text and email, self-booking, reminders, basic reports.</p></div>
+      <div class="tier"><h3><span class="dot" style="--c:#a62fa8"></span>Leading edge</h3><p>24/7 chat assistant, talent pool with job-match scores, location-aware alerts, source tracking.</p></div>
+      <div class="tier"><h3><span class="dot" style="--c:#FF0099"></span>Cutting edge</h3><p>Autonomous agents, AI voice interviews, no-show prediction, demand forecasting.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mvp" id="start">
+  <div class="wrap">
+    <h2>Start small</h2>
+    <p class="sub">A first version covers the foundation plus the two ideas above, tested at one location.</p>
+    <div class="grid g2">
+      <div><h3>In the first version</h3>
+        <ul class="clean"><li>Jobs page and Indeed invite link</li><li>Two-way text messages with consent</li><li>Prescreen and group interview booking</li><li>Pool with simple check-in messages</li></ul></div>
+      <div><h3>Later</h3>
+        <ul class="clean"><li>AI chat assistant</li><li>Automatic alerts for nearby openings</li><li>Match scores and forecasting</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="wrap">
+    <h2>What we still need to decide</h2>
+    <p class="sub">The full plan has 38 open questions. These come first.</p>
+    <ul class="q">
+      <li>How many hires per month, and at how many sites?</li>
+      <li>What exactly went wrong in the earlier trials?</li>
+      <li>What does "close enough" mean for our workers?</li>
+      <li>How far should AI go in screening?</li>
+      <li>Build on Odoo, buy a platform, or mix both?</li>
+      <li>Could this become a product for other companies?</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Dacos LLC · Concept draft, not a final plan</span>
+    <span>Based on the Dacos Hiring Funnel Design Plan v0.1</span>
+  </div>
+</footer>
 </body>
 </html>
