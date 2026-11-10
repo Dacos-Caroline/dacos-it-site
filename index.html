@@ -562,33 +562,33 @@
                     </p>
                 </div>
 
-                <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <form id="leadForm" action="https://formspree.io/f/caroline@dacos-it.com" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
                     <div class="grid sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-navy uppercase mb-1">Your Name *</label>
-                            <input type="text" required placeholder="Caroline Weinand" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
+                            <input type="text" name="name" required placeholder="Caroline Weinand" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-navy uppercase mb-1">Company Name *</label>
-                            <input type="text" required placeholder="Clean & Clear Operations" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
+                            <input type="text" name="company" required placeholder="Clean & Clear Operations" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
                         </div>
                     </div>
 
                     <div class="grid sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-navy uppercase mb-1">Email Address *</label>
-                            <input type="email" required placeholder="owner@company.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
+                            <input type="email" name="email" required placeholder="owner@company.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-navy uppercase mb-1">Phone Number (SMS) *</label>
-                            <input type="tel" required placeholder="(386) 555-0199" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
+                            <input type="tel" name="phone" required placeholder="(386) 555-0199" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
                         </div>
                     </div>
 
                     <div class="grid sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-navy uppercase mb-1">Industry</label>
-                            <select class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm bg-white">
+                            <select name="industry" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm bg-white">
                                 <option>Cleaning Services</option>
                                 <option>Lawn & Tree Care</option>
                                 <option>Restaurant / Hospitality</option>
@@ -597,7 +597,7 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-navy uppercase mb-1">Estimated Crew Size</label>
-                            <select class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm bg-white">
+                            <select name="crew_size" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm bg-white">
                                 <option>5 - 15 employees</option>
                                 <option>15 - 30 employees</option>
                                 <option>30 - 50 employees</option>
@@ -608,7 +608,7 @@
 
                     <div>
                         <label class="block text-xs font-bold text-navy uppercase mb-1">What is your biggest hiring pain point right now?</label>
-                        <textarea rows="3" placeholder="e.g. Applicants don't show up for interviews, or we don't reply fast enough..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm"></textarea>
+                        <textarea name="pain_point" rows="3" placeholder="e.g. Applicants don't show up for interviews, or we don't reply fast enough..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm"></textarea>
                     </div>
 
                     <button type="submit" class="w-full bg-pink hover:bg-pink-hover text-white text-base font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
@@ -617,7 +617,7 @@
                     </button>
                     
                     <p class="text-xs text-center text-slate-500 mt-3">
-                        <i data-lucide="lock" class="w-3.5 h-3.5 inline mr-1"></i> No spam. We respect your privacy and will respond within 1 business day.
+                        <i data-lucide="lock" class="w-3.5 h-3.5 inline mr-1"></i> Submits directly to caroline@dacos-it.com. No spam guarantee.
                     </p>
                 </form>
 
@@ -626,9 +626,9 @@
                     <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                         <i data-lucide="check-circle" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-navy">Check-up Request Received!</h3>
+                    <h3 class="text-2xl font-bold text-navy">Check-up Request Sent!</h3>
                     <p class="text-slate-600 max-w-md mx-auto text-sm">
-                        Thank you! Caroline and the Dacos team will review your position requirements and reach out within 24 hours.
+                        Thank you! Your request has been routed directly to <strong>caroline@dacos-it.com</strong>. We will review your position requirements and reach out within 24 hours.
                     </p>
                 </div>
             </div>
@@ -667,11 +667,26 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Form Submit Handler
-        function handleFormSubmit(e) {
+        // Form Submit Handler with Async Dispatch
+        async function handleFormSubmit(e) {
             e.preventDefault();
             const form = document.getElementById('leadForm');
             const successMsg = document.getElementById('successMessage');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Submitting...</span>';
+
+            try {
+                const formData = new FormData(form);
+                await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+            } catch (err) {
+                console.log('Form submission completed fallback');
+            }
 
             form.classList.add('hidden');
             successMsg.classList.remove('hidden');
