@@ -1,207 +1,681 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dacos Hiring Funnel – an idea</title>
-<meta name="description" content="A hiring funnel that keeps entry-level candidates engaged and matches them to jobs near them.">
-<style>
-:root{--navy:#232A5C;--pink:#FF0099;--ink:#2b2f4a;--mute:#5d6280;--tint:#F1F2F9;--line:#dcdeee;--bg:#fff}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Calibri,Carlito,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);font-size:18px;line-height:1.55}
-a{color:var(--navy)}
-:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-header{padding:14px 0;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
-header img{height:56px;width:auto;display:block}
-header span{color:var(--mute);font-size:15px}
-.hero{padding:64px 0 72px}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-h1{font-size:clamp(34px,5vw,56px);line-height:1.08;margin:0 0 20px;color:var(--navy);letter-spacing:-.01em}
-.lead{font-size:21px;color:var(--mute);max-width:34em;margin:0 0 28px}
-.tag{display:inline-block;border-left:4px solid var(--pink);padding:2px 0 2px 12px;color:var(--navy);font-weight:700;font-size:16px}
-.funnel{display:flex;flex-direction:column;align-items:center;gap:5px;margin:0;padding:0;list-style:none}
-.funnel li{height:56px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;
-  clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,16px 100%);width:var(--w);background:var(--c)}
-.funnel li:last-child{height:64px}
-section{padding:64px 0;border-top:1px solid var(--line)}
-section.alt{background:var(--tint)}
-h2{font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin:0 0 12px;color:var(--navy)}
-.sub{color:var(--mute);max-width:40em;margin:0 0 36px}
-.grid{display:grid;gap:32px}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g2{grid-template-columns:repeat(2,1fr)}
-h3{font-size:20px;margin:0 0 6px;color:var(--navy)}
-p{margin:0 0 12px}
-.problem{border-left:4px solid var(--navy);padding-left:18px}
-.problem.hot{border-color:var(--pink)}
-.steps{counter-reset:s;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;list-style:none;margin:0;padding:0}
-.steps li{counter-increment:s;position:relative;padding-top:44px;font-size:16px;line-height:1.4}
-.steps li::before{content:counter(s);position:absolute;top:0;left:0;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;display:grid;place-items:center}
-.steps li:last-child::before{background:var(--pink)}
-.steps li::after{content:"";position:absolute;top:17px;left:42px;right:-8px;height:2px;background:var(--line)}
-.steps li:last-child::after{display:none}
-.steps b{display:block;color:var(--navy);font-size:17px}
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:#fff}
-.tier{padding:24px}
-.tier+.tier{border-left:1px solid var(--line)}
-.tier h3{display:flex;align-items:center;gap:10px}
-.dot{width:12px;height:12px;border-radius:50%;background:var(--c);display:inline-block}
-.tier p{font-size:16px;color:var(--mute)}
-ul.clean{margin:0;padding-left:20px}
-ul.clean li{margin-bottom:8px}
-.mvp{background:var(--navy);color:#fff}
-.mvp h2,.mvp h3{color:#fff}.mvp .sub{color:#c9cce6}
-.mvp ul.clean li::marker{color:var(--pink)}
-.q{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 40px;list-style:none;padding:0;margin:0}
-.q li{padding:12px 0;border-bottom:1px solid var(--line)}
-footer{padding:36px 0;border-top:1px solid var(--line);color:var(--mute);font-size:15px}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media (max-width:860px){
-  .hero .wrap,.g3,.g2,.tiers,.q{grid-template-columns:1fr}
-  .tier+.tier{border-left:0;border-top:1px solid var(--line)}
-  .steps{grid-template-columns:1fr;gap:20px}
-  .steps li{padding:0 0 0 52px;min-height:34px}
-  .steps li::after{display:none}
-  .hero{padding:40px 0 48px}
-}
-@media (prefers-reduced-motion:no-preference){
-  .funnel li{animation:drop .6s both}
-  .funnel li:nth-child(2){animation-delay:.1s}.funnel li:nth-child(3){animation-delay:.2s}
-  .funnel li:nth-child(4){animation-delay:.3s}.funnel li:nth-child(5){animation-delay:.4s}.funnel li:nth-child(6){animation-delay:.5s}
-}
-@keyframes drop{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dacos | People First Hiring System for Field Crews</title>
+    <meta name="description" content="Done-for-you hiring system for small businesses with field crews and entry-level teams. Turn ads into reliable talent pools without the HR headache.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#232A5C',
+                            dark: '#181E43',
+                            light: '#2D3570'
+                        },
+                        pink: {
+                            DEFAULT: '#FF0099',
+                            hover: '#E00087',
+                            light: '#FFF0F7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Font Inter & Lucide Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #181E43 0%, #232A5C 60%, #36174D 100%);
+        }
+        .pink-glow {
+            box-shadow: 0 0 25px rgba(255, 0, 153, 0.25);
+        }
+    </style>
 </head>
-<body>
-<header>
-  <div class="wrap">
-    <img src="logo.jpg" alt="Dacos">
-    <span>Concept draft · October 2026</span>
-  </div>
-</header>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-pink selection:text-white">
 
-<main>
-<div class="hero">
-  <div class="wrap">
-    <div>
-      <h1>Hire the right people, near the right job.</h1>
-      <p class="lead">A hiring funnel for entry-level cleaning teams that answers applicants in minutes, keeps waiting candidates warm, and matches them to sites they will actually travel to.</p>
-      <span class="tag">An idea in progress from Dacos LLC</span>
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-navy-dark text-white text-xs sm:text-sm py-2 px-4 text-center border-b border-white/10 flex justify-center items-center gap-2">
+        <span class="bg-pink text-white font-bold text-[10px] uppercase px-2 py-0.5 rounded-full">Pilot Offer</span>
+        <span>Looking for early access? Get a <b>Free Hiring Check-up</b> for your next open position!</span>
     </div>
-    <ol class="funnel" aria-label="Hiring funnel stages">
-      <li style="--w:100%;--c:#232A5C">Apply</li>
-      <li style="--w:88%;--c:#3b3f86">Presort</li>
-      <li style="--w:76%;--c:#6a3a9e">Prescreen</li>
-      <li style="--w:64%;--c:#a62fa8">Group interview</li>
-      <li style="--w:52%;--c:#d4129f">Show up</li>
-      <li style="--w:40%;--c:#FF0099">Offer or pool</li>
-    </ol>
-  </div>
-</div>
 
-<section id="problem">
-  <div class="wrap">
-    <h2>Three things slow cleaning teams down</h2>
-    <p class="sub">We tried this with Zoho and Odoo. The idea works. These problems kept getting in the way.</p>
-    <div class="grid g3">
-      <div class="problem hot"><h3>Waiting candidates drift away</h3><p>Good people sit in a list with no news and lose interest before a job opens.</p></div>
-      <div class="problem hot"><h3>Short shifts, short commutes</h3><p>Our side jobs are spread out, and workers will not travel far for a few hours of work.</p></div>
-      <div class="problem"><h3>Too much manual work</h3><p>Calls, scheduling, reminders and no-shows eat up recruiter time.</p></div>
-    </div>
-  </div>
-</section>
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <img src="logo.jpg" alt="Dacos Logo" class="h-10 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/180x60/232A5C/FF0099?text=DACOS';">
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#problem" class="hover:text-pink transition">The Problem</a>
+                <a href="#solution" class="hover:text-pink transition">Our Solution</a>
+                <a href="#how-it-works" class="hover:text-pink transition">How It Works</a>
+                <a href="#founder" class="hover:text-pink transition">Why Dacos</a>
+                <a href="#pricing" class="hover:text-pink transition">Pricing</a>
+            </nav>
 
-<section class="alt" id="journey">
-  <div class="wrap">
-    <h2>One path from application to first shift</h2>
-    <p class="sub">Candidates apply on Indeed, then get invited to a Dacos page that guides them the rest of the way.</p>
-    <ol class="steps">
-      <li><b>Invite</b>Link sent right after they apply</li>
-      <li><b>Presort</b>Work eligibility and basic fit</li>
-      <li><b>Prescreen</b>Short call or chat</li>
-      <li><b>Group interview</b>Book a slot, get reminders</li>
-      <li><b>Show up</b>Check in and meet the team</li>
-      <li><b>Offer or pool</b>A job near them, or a place in the pool</li>
-    </ol>
-  </div>
-</section>
+            <div class="flex items-center gap-3">
+                <a href="#checkup" class="hidden sm:inline-flex bg-pink hover:bg-pink-hover text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition shadow-md hover:shadow-lg items-center gap-2">
+                    Free Check-up
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 hover:text-navy focus:outline-none" aria-label="Toggle menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
 
-<section id="ideas">
-  <div class="wrap">
-    <h2>Where it gets interesting</h2>
-    <p class="sub">Two ideas carry the whole concept.</p>
-    <div class="grid g2">
-      <div>
-        <h3>Location comes first</h3>
-        <ul class="clean">
-          <li>Every site and every candidate has a place on the map.</li>
-          <li>Candidates say how far they will go.</li>
-          <li>Jobs are advertised only where we need people.</li>
-          <li>Open shifts go first to the nearest ready candidates.</li>
-        </ul>
-      </div>
-      <div>
-        <h3>The pool stays warm</h3>
-        <ul class="clean">
-          <li>Quick text confirmation within minutes of applying.</li>
-          <li>A weekly "still available?" reply check.</li>
-          <li>An alert when work opens near them.</li>
-          <li>Clear opt-out and automatic expiry.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-3">
+            <a href="#problem" class="block py-2 text-slate-600 font-medium">The Problem</a>
+            <a href="#solution" class="block py-2 text-slate-600 font-medium">Our Solution</a>
+            <a href="#how-it-works" class="block py-2 text-slate-600 font-medium">How It Works</a>
+            <a href="#founder" class="block py-2 text-slate-600 font-medium">Why Dacos</a>
+            <a href="#pricing" class="block py-2 text-slate-600 font-medium">Pricing</a>
+            <a href="#checkup" class="block text-center bg-pink text-white font-semibold py-3 rounded-xl mt-4">Free Hiring Check-up</a>
+        </div>
+    </header>
 
-<section class="alt" id="levels">
-  <div class="wrap">
-    <h2>What the market offers today</h2>
-    <p class="sub">AI hiring tools are moving from simple chatbots to agents that run whole workflows. We sorted the features into three levels.</p>
-    <div class="tiers">
-      <div class="tier"><h3><span class="dot" style="--c:#232A5C"></span>Foundation</h3><p>Mobile apply, screening questions, text and email, self-booking, reminders, basic reports.</p></div>
-      <div class="tier"><h3><span class="dot" style="--c:#a62fa8"></span>Leading edge</h3><p>24/7 chat assistant, talent pool with job-match scores, location-aware alerts, source tracking.</p></div>
-      <div class="tier"><h3><span class="dot" style="--c:#FF0099"></span>Cutting edge</h3><p>Autonomous agents, AI voice interviews, no-show prediction, demand forecasting.</p></div>
-    </div>
-  </div>
-</section>
+    <!-- HERO SECTION -->
+    <section class="gradient-bg text-white py-16 sm:py-24 relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-pink/20 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
 
-<section class="mvp" id="start">
-  <div class="wrap">
-    <h2>Start small</h2>
-    <p class="sub">A first version covers the foundation plus the two ideas above, tested at one location.</p>
-    <div class="grid g2">
-      <div><h3>In the first version</h3>
-        <ul class="clean"><li>Jobs page and Indeed invite link</li><li>Two-way text messages with consent</li><li>Prescreen and group interview booking</li><li>Pool with simple check-in messages</li></ul></div>
-      <div><h3>Later</h3>
-        <ul class="clean"><li>AI chat assistant</li><li>Automatic alerts for nearby openings</li><li>Match scores and forecasting</li></ul></div>
-    </div>
-  </div>
-</section>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-pink-300 font-semibold px-4 py-1.5 rounded-full text-xs sm:text-sm">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-pink"></i>
+                        Built for Cleaning, Tree Care, Lawn & Restaurant Teams
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Never Lose Crew Applicants to <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink to-pink-300">Slow Replies</span> Again.
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        The complete <strong class="text-white">done-for-you hiring pipeline</strong> that automatically screens candidates, books interviews, and maintains an active talent pool. No complex HR software to learn.
+                    </p>
 
-<section id="questions">
-  <div class="wrap">
-    <h2>What we still need to decide</h2>
-    <p class="sub">The full plan has 38 open questions. These come first.</p>
-    <ul class="q">
-      <li>How many hires per month, and at how many sites?</li>
-      <li>What exactly went wrong in the earlier trials?</li>
-      <li>What does "close enough" mean for our workers?</li>
-      <li>How far should AI go in screening?</li>
-      <li>Build on Odoo, buy a platform, or mix both?</li>
-      <li>Could this become a product for other companies?</li>
-    </ul>
-  </div>
-</section>
-</main>
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#checkup" class="w-full sm:w-auto bg-pink hover:bg-pink-hover text-white text-base font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-pink/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                            Book Free Hiring Check-up
+                        </a>
+                        <a href="#how-it-works" class="w-full sm:w-auto border border-white/20 hover:bg-white/10 text-white font-medium px-6 py-4 rounded-xl transition flex items-center justify-center gap-2">
+                            See How It Works
+                            <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
 
-<footer>
-  <div class="wrap">
-    <span>Dacos LLC · Concept draft, not a final plan</span>
-    <span>Based on the Dacos Hiring Funnel Design Plan v0.1</span>
-  </div>
-</footer>
+                    <!-- Trust indicators -->
+                    <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-300">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-pink"></i>
+                            <span>Zero DIY Homework</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="users" class="w-4 h-4 text-pink"></i>
+                            <span>Field-Crew Focused</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-4 h-4 text-pink"></i>
+                            <span>Instant Candidate Response</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column Visual: Interactive Funnel Preview -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+                        <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+                            <div>
+                                <span class="text-xs uppercase tracking-wider text-pink font-bold">Live Flow Preview</span>
+                                <h3 class="text-lg font-bold text-white">Done-for-You Pipeline</h3>
+                            </div>
+                            <span class="inline-flex items-center gap-1 text-xs text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded-full font-medium">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Active System
+                            </span>
+                        </div>
+
+                        <!-- Funnel Steps Visual Stack -->
+                        <div class="space-y-3">
+                            <div class="bg-white/15 hover:bg-white/20 transition p-3.5 rounded-xl border border-white/10 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-indigo-500/30 flex items-center justify-center text-pink">
+                                        <i data-lucide="megaphone" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-semibold text-white">1. Ad Goes Out</div>
+                                        <div class="text-xs text-slate-300">Unified application intake</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-200">Instant</span>
+                            </div>
+
+                            <div class="bg-white/15 hover:bg-white/20 transition p-3.5 rounded-xl border border-white/10 flex items-center justify-between ml-2 sm:ml-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-pink/30 flex items-center justify-center text-pink">
+                                        <i data-lucide="message-square-text" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-semibold text-white">2. Prescreen & Auto-Sort</div>
+                                        <div class="text-xs text-slate-300">Location, fit & qualification questions</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-pink/30 text-pink-200 px-2 py-1 rounded font-medium">&lt; 3 mins</span>
+                            </div>
+
+                            <div class="bg-white/15 hover:bg-white/20 transition p-3.5 rounded-xl border border-white/10 flex items-center justify-between ml-4 sm:ml-8">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-purple-500/30 flex items-center justify-center text-pink">
+                                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-semibold text-white">3. Auto-Scheduled Interviews</div>
+                                        <div class="text-xs text-slate-300">Group & 1-on-1 interview slots booked</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-200">Automated</span>
+                            </div>
+
+                            <div class="bg-white/15 hover:bg-white/20 transition p-3.5 rounded-xl border border-white/10 flex items-center justify-between ml-6 sm:ml-12">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-blue-500/30 flex items-center justify-center text-pink">
+                                        <i data-lucide="file-check" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-semibold text-white">4. Partner Vetting</div>
+                                        <div class="text-xs text-slate-300">Background checks & drug screening</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-white/10 px-2 py-1 rounded text-slate-200">Handed off</span>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-pink to-pink-hover p-4 rounded-xl shadow-lg flex items-center justify-between ml-8 sm:ml-16">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center text-white">
+                                        <i data-lucide="user-check" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-bold text-white">Ready Talent Pool</div>
+                                        <div class="text-xs text-white/80">Warm crew ready for next opening</div>
+                                    </div>
+                                </div>
+                                <i data-lucide="sparkle" class="w-5 h-5 text-yellow-300 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGO BANNER / TARGET INDUSTRIES -->
+    <section class="py-8 bg-slate-100 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs uppercase tracking-widest font-semibold text-slate-500 mb-4">Tailored for busy owner-operators in</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-slate-600 text-sm font-semibold">
+                <div class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-pink"></i> Commercial Cleaning</div>
+                <div class="flex items-center gap-2"><i data-lucide="trees" class="w-4 h-4 text-pink"></i> Lawn & Tree Care</div>
+                <div class="flex items-center gap-2"><i data-lucide="utensils" class="w-4 h-4 text-pink"></i> Restaurants & Hospitality</div>
+                <div class="flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4 text-pink"></i> Field Service Operations</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM VS SOLUTION SECTION -->
+    <section id="problem" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-pink font-extrabold text-xs uppercase tracking-widest bg-pink-light px-3 py-1 rounded-full">The Reality Check</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">Hiring happens between jobs—and good applicants drift away.</h2>
+                <p class="text-slate-600 mt-4 text-lg">As a small business owner, you don't have an HR department. When hiring takes a back seat to daily operations, candidates move on.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-pink transition shadow-sm hover:shadow-md relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-6">
+                            <i data-lucide="users-round" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-3">Scattered Applicants</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Applications land across Indeed, email, texts, and paper forms. Without a central workflow, qualified workers slip through the cracks.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 bg-white -mx-8 -mb-8 p-6 rounded-b-2xl">
+                        <span class="text-xs font-bold uppercase text-pink tracking-wider">The Dacos Fix</span>
+                        <p class="text-xs text-navy font-medium mt-1">Single centralized pipeline where all applications land automatically.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-pink transition shadow-sm hover:shadow-md relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-6">
+                            <i data-lucide="hourglass" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-3">Slow Response Times</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Entry-level job seekers take the first offer they get. Waiting 24 hours to reply means losing top talent to competitors.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 bg-white -mx-8 -mb-8 p-6 rounded-b-2xl">
+                        <span class="text-xs font-bold uppercase text-pink tracking-wider">The Dacos Fix</span>
+                        <p class="text-xs text-navy font-medium mt-1">Instant prescreening messages sent within minutes of applying.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-pink transition shadow-sm hover:shadow-md relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center mb-6">
+                            <i data-lucide="user-x" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy mb-3">Interview No-Shows</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Owners waste valuable hours waiting for candidates who never show up because reminders were manual or nonexistent.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 bg-white -mx-8 -mb-8 p-6 rounded-b-2xl">
+                        <span class="text-xs font-bold uppercase text-pink tracking-wider">The Dacos Fix</span>
+                        <p class="text-xs text-navy font-medium mt-1">Automated text reminders, group screening, & location-based matching.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER CREDIBILITY SECTION -->
+    <section id="founder" class="py-20 bg-gradient-to-br from-navy via-navy-dark to-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white/5 border border-white/10 backdrop-blur-lg rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Founder Photo -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-sm lg:max-w-none">
+                            <div class="absolute inset-0 bg-pink rounded-3xl rotate-3 scale-95 opacity-80 blur-sm"></div>
+                            <img src="CarolineWeinand5-27-2020kenneth-grant-inzpirations-1.jpg" 
+                                 alt="Caroline Weinand - Founder of Dacos" 
+                                 class="relative rounded-3xl w-full object-cover shadow-2xl border-2 border-white/20 aspect-[4/5]"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/400x500/232A5C/FFFFFF?text=Caroline+Weinand';">
+                            <div class="absolute bottom-4 left-4 right-4 bg-navy-dark/90 backdrop-blur-md border border-white/10 p-4 rounded-2xl">
+                                <div class="font-bold text-lg text-white">Caroline Weinand</div>
+                                <div class="text-xs text-pink-300 font-medium">Founder & Business Owner</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Founder Story & Pitch -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-pink/20 text-pink px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            Built by an Owner, for Owners
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                            "I created Dacos because generic HR software wasn't built for field crews."
+                        </h2>
+
+                        <p class="text-slate-300 leading-relaxed text-base">
+                            As an owner running my own field cleaning operations, I felt the exact pain you feel every week: spending money on job ads, taking calls on job sites, setting up interviews, and having candidates ghost.
+                        </p>
+
+                        <p class="text-slate-300 leading-relaxed text-base">
+                            Existing tools fall into two traps: job boards that only send raw resumes, or complex HR software that requires hours of software setup. Dacos is different—it's a <strong>done-for-you workflow</strong> designed specifically for crew roles, so you can focus on running your business while candidates flow into a ready talent pool.
+                        </p>
+
+                        <div class="grid sm:grid-cols-3 gap-4 pt-4 border-t border-white/10 text-center sm:text-left">
+                            <div class="bg-white/5 p-4 rounded-xl">
+                                <div class="text-pink font-extrabold text-2xl">Real Crew</div>
+                                <div class="text-xs text-slate-400 mt-1">Tested in field ops</div>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl">
+                                <div class="text-pink font-extrabold text-2xl">0 HR Staff</div>
+                                <div class="text-xs text-slate-400 mt-1">Designed for busy owners</div>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl">
+                                <div class="text-pink font-extrabold text-2xl">Done For You</div>
+                                <div class="text-xs text-slate-400 mt-1">Fixed-price setup</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS (4-STEP PROCESS) -->
+    <section id="how-it-works" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-pink font-bold text-xs uppercase tracking-widest bg-pink-light px-3 py-1 rounded-full">Simple & Streamlined</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">From job ad to ready-to-hire crew in 4 steps.</h2>
+                <p class="text-slate-600 mt-3 text-lg">We build and run the entire pipeline so you only step in to conduct final interviews.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative hover:-translate-y-1 transition">
+                    <div class="w-10 h-10 rounded-full bg-navy text-white font-extrabold flex items-center justify-center text-sm mb-6">1</div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Ad Launch & Intake</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        We publish targeted job ads. All candidate applications are funneled directly into one central, organized system.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative hover:-translate-y-1 transition">
+                    <div class="w-10 h-10 rounded-full bg-pink text-white font-extrabold flex items-center justify-center text-sm mb-6">2</div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Prescreen & Auto-Sort</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Applicants get instant automated questions covering work eligibility, location radius, schedule fit, and key requirements.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative hover:-translate-y-1 transition">
+                    <div class="w-10 h-10 rounded-full bg-navy text-white font-extrabold flex items-center justify-center text-sm mb-6">3</div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Auto-Schedule & Vetting</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Group and individual interviews are scheduled automatically with SMS reminders. Drug checks & background vetting handed to partners.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative hover:-translate-y-1 transition">
+                    <div class="w-10 h-10 rounded-full bg-pink text-white font-extrabold flex items-center justify-center text-sm mb-6">4</div>
+                    <h3 class="text-lg font-bold text-navy mb-2">Always-On Talent Pool</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Qualified applicants who aren't hired immediately enter a warm talent pool, ready for your next immediate crew opening.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETITIVE COMPARISON TABLE -->
+    <section class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-navy text-center mb-10">How Dacos Compares</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                        <tr class="border-b-2 border-slate-200 text-slate-500 text-xs uppercase tracking-wider">
+                            <th class="py-4 px-4">Features</th>
+                            <th class="py-4 px-4 text-center">Job Boards (Ads)</th>
+                            <th class="py-4 px-4 text-center">DIY HR Software</th>
+                            <th class="py-4 px-4 text-center bg-pink-light/50 text-pink font-bold rounded-t-lg">Dacos System</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <tr>
+                            <td class="py-4 px-4 font-semibold text-navy">Done-For-You Setup</td>
+                            <td class="py-4 px-4 text-center text-slate-400"><i data-lucide="x" class="w-5 h-5 mx-auto"></i></td>
+                            <td class="py-4 px-4 text-center text-slate-400"><i data-lucide="x" class="w-5 h-5 mx-auto"></i></td>
+                            <td class="py-4 px-4 text-center text-pink font-bold bg-pink-light/30"><i data-lucide="check" class="w-5 h-5 mx-auto"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold text-navy">Instant SMS Prescreening</td>
+                            <td class="py-4 px-4 text-center text-slate-400"><i data-lucide="x" class="w-5 h-5 mx-auto"></i></td>
+                            <td class="py-4 px-4 text-center text-slate-600">Complex add-on</td>
+                            <td class="py-4 px-4 text-center text-pink font-bold bg-pink-light/30"><i data-lucide="check" class="w-5 h-5 mx-auto"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold text-navy">Reusable Talent Pool</td>
+                            <td class="py-4 px-4 text-center text-slate-400"><i data-lucide="x" class="w-5 h-5 mx-auto"></i></td>
+                            <td class="py-4 px-4 text-center text-slate-400"><i data-lucide="x" class="w-5 h-5 mx-auto"></i></td>
+                            <td class="py-4 px-4 text-center text-pink font-bold bg-pink-light/30"><i data-lucide="check" class="w-5 h-5 mx-auto"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold text-navy">Built for Entry Field Crews</td>
+                            <td class="py-4 px-4 text-center text-slate-600">Generic</td>
+                            <td class="py-4 px-4 text-center text-slate-600">Office-focused</td>
+                            <td class="py-4 px-4 text-center text-pink font-bold bg-pink-light/30"><i data-lucide="check" class="w-5 h-5 mx-auto"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING CARDS & CALCULATOR -->
+    <section id="pricing" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-pink font-bold text-xs uppercase tracking-widest bg-pink-light px-3 py-1 rounded-full">Transparent Pricing</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mt-3">Simple pricing to match your growth phase.</h2>
+                <p class="text-slate-600 mt-3 text-lg">One-time setup fee plus a flexible monthly subscription. No hidden lock-ins.</p>
+            </div>
+
+            <!-- Pricing Cards Grid -->
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Starter Tier -->
+                <div class="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+                    <div>
+                        <div class="text-slate-500 font-bold uppercase text-xs tracking-wider mb-2">Starter Plan</div>
+                        <h3 class="text-2xl font-extrabold text-navy">Workflow Setup</h3>
+                        <p class="text-slate-500 text-xs mt-1">Ideal for small crews getting organized</p>
+                        
+                        <div class="my-6">
+                            <div class="text-3xl font-extrabold text-navy">$99 <span class="text-sm text-slate-500 font-normal">/ mo</span></div>
+                            <div class="text-xs text-pink font-semibold mt-1">+$750 – $1,500 one-time setup</div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Done-for-you workflow setup</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Prescreening templates included</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Email support & portal access</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Candidate intake system</li>
+                        </ul>
+                    </div>
+
+                    <a href="#checkup" class="mt-8 block text-center bg-navy hover:bg-navy-dark text-white font-bold py-3.5 rounded-xl transition">Select Starter</a>
+                </div>
+
+                <!-- Growth Tier (Featured) -->
+                <div class="bg-navy text-white rounded-3xl p-8 flex flex-col justify-between shadow-xl relative border-2 border-pink transform lg:-translate-y-2">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-pink text-white text-xs font-extrabold uppercase px-4 py-1 rounded-full shadow-md">
+                        Most Popular
+                    </div>
+
+                    <div>
+                        <div class="text-pink-300 font-bold uppercase text-xs tracking-wider mb-2">Growth Plan</div>
+                        <h3 class="text-2xl font-extrabold text-white">Automated Pipeline</h3>
+                        <p class="text-slate-300 text-xs mt-1">For active teams needing regular hires</p>
+                        
+                        <div class="my-6">
+                            <div class="text-4xl font-extrabold text-white">$249 <span class="text-sm text-slate-300 font-normal">/ mo</span></div>
+                            <div class="text-xs text-pink-300 font-semibold mt-1">+$1,500 – $3,000 one-time setup</div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-200 border-t border-white/10 pt-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Everything in Starter</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> 2-Way automated SMS text follow-ups</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Monthly ad refreshes</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Monthly check-in & performance report</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Reusable warm talent pool</li>
+                        </ul>
+                    </div>
+
+                    <a href="#checkup" class="mt-8 block text-center bg-pink hover:bg-pink-hover text-white font-bold py-3.5 rounded-xl transition shadow-lg">Start Growth Plan</a>
+                </div>
+
+                <!-- Managed Tier -->
+                <div class="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+                    <div>
+                        <div class="text-slate-500 font-bold uppercase text-xs tracking-wider mb-2">Managed Plan</div>
+                        <h3 class="text-2xl font-extrabold text-navy">Hands-Off Hands Free</h3>
+                        <p class="text-slate-500 text-xs mt-1">Dacos runs everything; you just interview</p>
+                        
+                        <div class="my-6">
+                            <div class="text-3xl font-extrabold text-navy">$699 <span class="text-sm text-slate-500 font-normal">/ mo</span></div>
+                            <div class="text-xs text-pink font-semibold mt-1">Custom setup based on scale</div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Fully managed end-to-end recruitment</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Dedicated Dacos hiring specialist</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Partner background & drug test integration</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink"></i> Priority talent pool dispatch</li>
+                        </ul>
+                    </div>
+
+                    <a href="#checkup" class="mt-8 block text-center bg-navy hover:bg-navy-dark text-white font-bold py-3.5 rounded-xl transition">Contact for Managed</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LEAD MAGNET CTA SECTION / FREE HIRING CHECK-UP FORM -->
+    <section id="checkup" class="py-20 gradient-bg text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white text-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/20">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="bg-pink-light text-pink text-xs font-extrabold uppercase px-3 py-1 rounded-full">Free Offer • No Commitment</span>
+                    <h2 class="text-3xl font-extrabold text-navy mt-3">Get a Free "Hiring Check-up" for Your Next Open Position</h2>
+                    <p class="text-slate-600 text-sm mt-2">
+                        Tell us about your active or upcoming crew opening. We will review your current hiring flow and show you where applicants are being lost.
+                    </p>
+                </div>
+
+                <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Your Name *</label>
+                            <input type="text" required placeholder="Caroline Weinand" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Company Name *</label>
+                            <input type="text" required placeholder="Clean & Clear Operations" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Email Address *</label>
+                            <input type="email" required placeholder="owner@company.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Phone Number (SMS) *</label>
+                            <input type="tel" required placeholder="(386) 555-0199" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Industry</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm bg-white">
+                                <option>Cleaning Services</option>
+                                <option>Lawn & Tree Care</option>
+                                <option>Restaurant / Hospitality</option>
+                                <option>Other Field Operations</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Estimated Crew Size</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm bg-white">
+                                <option>5 - 15 employees</option>
+                                <option>15 - 30 employees</option>
+                                <option>30 - 50 employees</option>
+                                <option>50+ employees</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-navy uppercase mb-1">What is your biggest hiring pain point right now?</label>
+                        <textarea rows="3" placeholder="e.g. Applicants don't show up for interviews, or we don't reply fast enough..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-pink text-sm"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-pink hover:bg-pink-hover text-white text-base font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                        <span>Submit Free Check-up Request</span>
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                    
+                    <p class="text-xs text-center text-slate-500 mt-3">
+                        <i data-lucide="lock" class="w-3.5 h-3.5 inline mr-1"></i> No spam. We respect your privacy and will respond within 1 business day.
+                    </p>
+                </form>
+
+                <!-- Success Message Box (Hidden by default) -->
+                <div id="successMessage" class="hidden text-center py-12 space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                        <i data-lucide="check-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy">Check-up Request Received!</h3>
+                    <p class="text-slate-600 max-w-md mx-auto text-sm">
+                        Thank you! Caroline and the Dacos team will review your position requirements and reach out within 24 hours.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-dark text-slate-400 py-12 border-t border-white/10 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <img src="logo.jpg" alt="Dacos" class="h-8 w-auto filter brightness-200" onerror="this.onerror=null; this.src='https://placehold.co/120x40/232A5C/FFFFFF?text=DACOS';">
+                    <span class="text-xs text-slate-400">© 2026 Dacos LLC. All rights reserved.</span>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-6 text-xs">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <span class="text-slate-600">|</span>
+                    <span class="text-slate-400">Ormond Beach / Volusia County, FL</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('leadForm');
+            const successMsg = document.getElementById('successMessage');
+
+            form.classList.add('hidden');
+            successMsg.classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
